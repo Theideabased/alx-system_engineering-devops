@@ -1,2 +1,2 @@
 #!/bin/bash
-sh bin /etc/passwd | wc-l
+find bin /etc/passwd | wc -m
