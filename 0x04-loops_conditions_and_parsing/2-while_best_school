@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# this will use while loop to print Best School ten time
+var=1
+while [ $var -le 10 ]
+do
+	echo "Best School"
+	((var++))
+done
