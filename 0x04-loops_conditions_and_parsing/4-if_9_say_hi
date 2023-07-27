@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# this will print "Best School" 10 times and print Hi in number 9
+var=0
+while [ $var -le 9 ]
+do
+	if [ $var -eq 9 ]
+	then
+		echo "Hi"
+	fi
+	echo "Best School"
+	((var++))
+
+done

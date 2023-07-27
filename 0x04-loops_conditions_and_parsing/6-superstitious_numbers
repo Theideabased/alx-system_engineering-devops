@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# This will print number 1 to 20
+# with "bad luck fro china" after 4
+# "bad luck from japan" after 9
+# "bad luck from italy" after 17
+var=1
+while [ $var -le 20 ]
+do
+	case $var in
+	5)
+		echo "bad luck from China";;
+	10)
+		echo "bad luck from japan";;
+	18)
+		echo "bad luck from Italy";;
+	esac
+	echo $var
+	((var++))
+done
