@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# This wil print 'To infinity and beyond' infintely
+count=3
+while (( count > 1 ))
+do
+	echo "To infinity and beyond"
+	sleep 2
+(( count++ ))
+done

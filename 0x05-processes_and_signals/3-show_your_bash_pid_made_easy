@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# this will print the process and bash without using ps
+pgrep -l bash
