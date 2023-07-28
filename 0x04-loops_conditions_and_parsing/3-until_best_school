@@ -6,3 +6,4 @@ do
 	echo "Best School"
 	((var++))
 done
+
