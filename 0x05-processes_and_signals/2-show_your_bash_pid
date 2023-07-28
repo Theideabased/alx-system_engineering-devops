@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# will print the pid that contain bash
+ps -e | grep bash
