@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# this will stop the 4th task process using kill
+# shellcheck disable=SC2009
+filename='4-to_infinity_and_beyond'
+kill $(ps aux | grep $filename | awk '{print $2}')

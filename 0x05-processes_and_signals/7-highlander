@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Print to infinity and beyond and when it recieve SIGTERM signal
+# print "i am invisible"
+trap 'echo "I am invincible!!!"; exit' SIGTERM
+
+while true; do
+	echo "To infinity and beyond"
+	sleep 2
+done
