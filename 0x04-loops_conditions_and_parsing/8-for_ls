@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# This will print the file in the current directory after -
+for file in *; do
+	name_after_file=$(echo "$file" | cut -d'-' -f2-)
+	echo "$name_after_file"
+done

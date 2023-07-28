@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# loop clock till 12:59
+# Initialize variables for hours and minutes
+hour=0
+minute=1
+
+# Loop until 12:59 is reached
+while [ $hour -le 12 ]; do
+    # Print the current time
+    	printf "%02d:%02d\n" $hour $minute
+
+    # Increment the minute
+    	minute=$((minute + 1))
+
+    # Check if minute reaches 60, reset minute and increment hour
+    	if [ $minute -eq 60 ]; then
+        	minute=0
+        	hour=$((hour + 1))
+    	fi
+done

@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# This will print the fizzbuzz if it is a multiple of 3 and 5
+# It will print fizz if it is a multiple of 3
+# It will print buzz if it is a multiple of 5
+#!/bin/bash
+var=1
+while [ $var -le 100 ]
+do
+    	if ((var % 3 == 0 && var % 5 == 0)); then
+        	echo "FizzBuzz"
+    	elif ((var % 3 == 0 && var % 5 != 0)); then
+        	echo "Fizz"
+    	elif ((var % 5 == 0 && var % 3 != 0)); then
+        	echo "Buzz"
+    	else
+        	echo "$var"
+    	fi
+	((var++))
+done
