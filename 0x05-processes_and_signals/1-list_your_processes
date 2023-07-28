@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 # the bash script that will run all the current process running
-echo "$top"
+echo ""
+top
