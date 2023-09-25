@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# This will create a ssh private key in root ~/ssh/school
+# Define the key file name and passphrase
+key_file="school"
+passphrase="betty"
+
+# Generate an RSA key pair with a 4096-bit key length and passphrase protection
+ssh-keygen -t rsa -b 4096 -f "$key_file" -N "$passphrase"
