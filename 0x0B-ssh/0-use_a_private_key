@@ -1,9 +1,4 @@
 #!/usr/bin/env bash
 # This code will connect to my server using my ssh private key in the directory
-# Define variables
-i="100.27.12.175" # Server IP address
-k="~/.ssh/school" # Private key file path
-l="ubuntu"       # Username
-
 # The script
-ssh -i "$k" "$l@$i"
+ssh -i ~/.ssh/school ubuntu@100.25.138.74
