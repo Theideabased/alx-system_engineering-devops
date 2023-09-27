@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Install nginx web server
+# Update package index and install Nginx
+sudo apt-get update
+sudo apt-get install -y nginx
+
+# Create an HTML file that prints "Hello World!"
+echo "Hello World!" | sudo tee /var/www/html/index.html
+
+# Restart Nginx server
+sudo service nginx restart
+
+# Enable Nginx to start on boot
+sudo service nginx enable
+
+# Exit
+exit 0
