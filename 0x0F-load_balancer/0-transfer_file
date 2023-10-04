@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Script transfers a file to your server
+# Parameter Key
+path="$1"
+ip="$2"
+user="$3"
+key="$4"
+
+# Check if parameters are less than 3
+if [ $# -lt 3 ]; then
+    echo "Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
+    exit 1
+elif [ $# -lt 4 ]; then
+    # Transfer the file to server disabling strict host key check
+    scp -o StrictHostKeyChecking=no "$path" "$user@$ip:~/"
+else
+    # Transfer the file to server disabling strict host key checking
+    scp -i "$key" -o StrictHostKeyChecking=no "$path" "$user@ip:~/"
+fi
