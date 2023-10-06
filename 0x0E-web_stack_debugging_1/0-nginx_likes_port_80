@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Fix Nginx server to listen on Port 80
+#copy the configuration of sites-available to site-enabled
+sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+
+# Restart Nginx to apply changes
+sudo service nginx restart

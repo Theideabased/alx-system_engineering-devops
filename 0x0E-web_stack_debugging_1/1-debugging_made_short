@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Fix the bug and kill the nginx
+
+sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx restart
+pkill -o nginx
