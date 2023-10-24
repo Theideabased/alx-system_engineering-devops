@@ -1,41 +1,18 @@
 #!/usr/bin/python3
-import requests
+"""script using this REST API, for a given employee ID,
+returns information about his/her TODO list progress."""
+import requests as r
 import sys
 
-# Check if an employee ID is provided as a command-line argument
-if __name__ == "__main__":
-
-    if len(sys.argv) != 2:
-        print("Usage: python todo_progress.py <employee_id>")
-        sys.exit(1)
-
-    employee_id = int(sys.argv[1])
-    api_url = f"https://jsonplaceholder.typicode.com/todos?userId= \
-    {employee_id}"
-    user_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
-
-    try:
-        # Fetch employee data
-        user_response = requests.get(user_url)
-        user_data = user_response.json()
-
-        # Fetch TODO list data
-        todo_response = requests.get(api_url)
-        todo_data = todo_response.json()
-
-        # Calculate progress
-        total_tasks = len(todo_data)
-        done_tasks = sum(1 for task in todo_data if task['completed'])
-
-        # Print the progress report
-        print(f"Employee {user_data['name']} is done with tasks \
-                ({done_tasks}/{total_tasks}):")
-        print(f"{user_data['name']} - {user_data['username']}")
-
-        for task in todo_data:
-            if task['completed']:
-                print(f"\t{task['title']}")
-
-    except requests.exceptions.RequestException as e:
-        print(f"An error occurred while making a request: {e}")
-        sys.exit(1)
+if __name__ == '__main__':
+    url = 'https://jsonplaceholder.typicode.com/'
+    usr_id = r.get(url + 'users/{}'.format(sys.argv[1])).json()
+    to_do = r.get(url + 'todos', params={'userId': sys.argv[1]}).json()
+#    print(to_do)
+    completed = [title.get("title") for title in to_do if
+                 title.get('completed') is True]
+    print(completed)
+    print("Employee {} is done with tasks({}/{}):".format(usr_id.get("name"),
+                                                          len(completed),
+                                                          len(to_do)))
+    [print("\t {}".format(title)) for title in completed]
