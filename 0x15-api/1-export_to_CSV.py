@@ -1,17 +1,30 @@
 #!/usr/bin/python3
-"""Script to export data in the CSV format"""
+"""Script exports information on Employee to CSV"""
 import csv
-import requests as r
+import requests
 import sys
+
 
 if __name__ == "__main__":
     user_id = sys.argv[1]
-    url = "https://jsonplaceholder.typicode.com/"
-    usr = r.get(url + "users/{}".format(user_id)).json()
-    username = usr.get("username")
-    to_do = r.get(url + "todos", params={"userId": user_id}).json()
 
-    with open("{}.csv".format(user_id), "w", newline="") as csvfile:
-        writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
-        [writer.writerow([user_id, username, elm.get("completed"),
-                          elm.get("title")]) for elm in to_do]
+    # Fetch User data
+    url = 'https://jsonplaceholder.typicode.com/'
+    user_res = requests.get(f'{url}users/{user_id}')
+    user_info = user_res.json()
+    username = user_info.get('username')
+
+    # Fetch todo data
+    todo_res = requests.get(f'{url}todos?userId={user_id}')
+    todo_info = todo_res.json()
+
+    # Open a CSV file with the user ID as it's name
+    with open(f'{user_id}.csv', 'w', newline='') as file:
+        writer = csv.writer(file,
+                            delimiter=',',
+                            quotechar='"', quoting=csv.QUOTE_ALL)
+
+        for task in todo_info:
+            task = [user_id, username,
+                    task.get('completed'), task.get('title')]
+            writer.writerow(task)
