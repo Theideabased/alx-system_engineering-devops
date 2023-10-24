@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Script exports information on Employee to CSV"""
+"""This Script exports information on Employee to CSV"""
 import csv
 import requests
 import sys
