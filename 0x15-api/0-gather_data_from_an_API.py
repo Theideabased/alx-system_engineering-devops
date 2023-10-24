@@ -14,7 +14,7 @@ if __name__ == "__main__":
     name = user_info.get('name')
 
     # Fetch todo data
-    todo_res = requests.get(f'{url}todos?userId={user_id}')
+    todo_res = r.get(f'{url}todos?userId={user_id}')
     todo_info = todo_res.json()
 
     total_tasks = len(todo_info)
