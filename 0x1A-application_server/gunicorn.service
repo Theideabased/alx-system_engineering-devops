@@ -1,0 +1,14 @@
+[Unit]
+Description=Gunicorn instance to serve Airbnb content
+After=network.target
+
+[Service]
+User=ubuntu  # Replace 'your_username' with your username
+Group=ubuntu    # Replace 'your_group' with your group
+WorkingDirectory=/home/ubuntu/AirBnB_clone_v4
+ExecStart=/usr/bin/gunicorn -w 3 -b 0.0.0.0:5003 -t 120 web_dynamic.2-hbnb:app
+StandardError=append:/tmp/airbnb-error.log
+StandardOutput=append:/tmp/airbnb-access.log
+
+[Install]
+WantedBy=multi-user.target
